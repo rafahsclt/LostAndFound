@@ -1,8 +1,8 @@
 import { Request, Response } from 'express'
 import { getRepository } from 'typeorm'
+import * as Yup from 'yup'
 
 import items_views from '../views/items_views'
-
 import Item from '../models/Item'
 
 async function create(request: Request, response: Response) {
@@ -24,7 +24,7 @@ async function create(request: Request, response: Response) {
         return { path: image.filename }
     })
 
-    const item = itemRepository.create({
+    const data = {
         name,
         telephone,
         object,
@@ -34,7 +34,27 @@ async function create(request: Request, response: Response) {
         observations,
         lostOrFound: 'found',
         images
+    }
+
+    const schema = Yup.object().shape({
+        name: Yup.string().required(),
+        telephone: Yup.string().required(),
+        object: Yup.string().required(),
+        category: Yup.string().required(),
+        latitude: Yup.number().required(),
+        longitude: Yup.number().required(),
+        observations: Yup.string().max(300),
+        lostOrFound: Yup.string().required(),
+        images: Yup.array(Yup.object().shape({
+            path: Yup.string().required()
+        }))
     })
+
+    await schema.validate(data, {
+        abortEarly: false
+    })
+
+    const item = itemRepository.create(data)
 
     await itemRepository.save(item)
 
@@ -49,7 +69,7 @@ async function index(request: Request, response: Response) {
         relations: ['images']
     })
 
-    return response.json(items)
+    return response.json(items_views.renderMany(items))
 }
 
 export default { create, index }
