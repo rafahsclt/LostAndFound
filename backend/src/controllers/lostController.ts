@@ -40,7 +40,7 @@ async function create(request: Request, response: Response) {
         name: Yup.string().required(),
         telephone: Yup.string().required(),
         object: Yup.string().required(),
-        category: Yup.string().required(),
+        category: Yup.number().required(),
         latitude: Yup.number().required(),
         longitude: Yup.number().required(),
         observations: Yup.string().max(300),
