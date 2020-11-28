@@ -1,3 +1,9 @@
 import { createConnection } from 'typeorm'
+import fillCategory from '../utils/fillCategory'
 
-createConnection()
+const connect = async () => {
+    await createConnection()
+    await fillCategory()
+}
+
+connect()

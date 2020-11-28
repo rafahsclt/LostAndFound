@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm'
 
 import Item from './Item'
 
@@ -10,7 +10,7 @@ export default class Image {
     @Column()
     path: string
 
-    @OneToOne(() => Item, item => item.images)
+    @ManyToOne(() => Item, item => item.images)
     @JoinColumn({ name: 'item_id' })
     item: Item
 }

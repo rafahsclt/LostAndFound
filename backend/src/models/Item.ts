@@ -35,7 +35,9 @@ export default class Item {
     @JoinColumn({ name: 'item_id' })
     images: Image[]
 
-    @ManyToOne(() => Category, category => category.item)
+    @ManyToOne(() => Category, category => category.items, {
+        cascade: ['insert', 'update']
+    })
     @JoinColumn({ name: 'category_id' })
     category: Category
 }

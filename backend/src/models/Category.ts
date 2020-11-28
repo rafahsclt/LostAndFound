@@ -10,9 +10,7 @@ export default class Category {
     @Column()
     name: string
 
-    @OneToMany(() => Item, item => item.category, {
-        cascade: ['insert', 'update']
-    })
+    @OneToMany(() => Item, item => item.category)
     @JoinColumn({ name: 'category_id' })
-    item: Item[]
+    items: Item[]
 }
