@@ -3,10 +3,10 @@ import { Router } from 'express'
 import lostRouter from './lostRouter'
 import foundRouter from './foundRouter'
 
-const routerMaster = Router()
+const routes = Router()
 
-routerMaster.use('/lost', lostRouter)
-routerMaster.use('/found', foundRouter)
+routes.use('/lost', lostRouter)
+routes.use('/found', foundRouter)
 
 
-export default routerMaster
+export default routes

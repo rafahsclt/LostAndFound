@@ -1,13 +1,14 @@
 import { Router } from 'express'
+import multer from 'multer'
+
+import uploadConfig from '../config/upload'
+import lostController from '../controllers/lostController'
 
 const lostRouter = Router()
+const upload = multer(uploadConfig)
 
-lostRouter.get('/lost', (request, response) => {
-    return response.json({ message : 'lost' })
-})
+lostRouter.get('/', lostController.index)
 
-lostRouter.post('/lost', (request, response) => {
-    return response.json({ message : 'lost' })
-})
+lostRouter.post('/', upload.array('images'), lostController.create)
 
 export default lostRouter
