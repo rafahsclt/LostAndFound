@@ -1,5 +1,6 @@
 import Item from '../models/Item'
 import images_views from './images_views'
+import categories_views from './categories_views'
 
 function render(item: Item) {
     return {
@@ -10,7 +11,7 @@ function render(item: Item) {
         latitude: item.latitude,
         longitude: item.longitude,
         observations: item.observations,
-        category: item.category,
+        category: categories_views.render(item.category),
         images: images_views.renderMany(item.images)
     }
 }

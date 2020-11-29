@@ -10,7 +10,7 @@ async function create(request: Request, response: Response) {
         name,
         telephone,
         object,
-        category,
+        category_id,
         latitude,
         longitude,
         observations
@@ -28,7 +28,7 @@ async function create(request: Request, response: Response) {
         name,
         telephone,
         object,
-        category,
+        category_id,
         latitude,
         longitude,
         observations,
@@ -40,7 +40,7 @@ async function create(request: Request, response: Response) {
         name: Yup.string().required(),
         telephone: Yup.string().required(),
         object: Yup.string().required(),
-        category: Yup.number().required(),
+        category_id: Yup.number().required(),
         latitude: Yup.number().required(),
         longitude: Yup.number().required(),
         observations: Yup.string().max(300),
@@ -66,7 +66,7 @@ async function index(request: Request, response: Response) {
 
     const items = await itemRepository.find({
         where: { lostOrFound: 'lost' },
-        relations: ['images']
+        relations: ['images', 'category']
     })
 
     return response.json(items_views.renderMany(items))

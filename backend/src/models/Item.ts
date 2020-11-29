@@ -29,6 +29,9 @@ export default class Item {
     @Column()
     observations: string
 
+    @Column()
+    category_id: number
+
     @OneToMany(() => Image, image => image.item, {
         cascade: ['insert', 'update']
     })

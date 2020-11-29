@@ -31,10 +31,6 @@ export class createItems1606589843241 implements MigrationInterface {
                     type: 'varchar'
                 },
                 {
-                    name: 'category',
-                    type: 'varchar'
-                },
-                {
                     name: 'latitude',
                     type: 'decimal',
                     scale: 10,
