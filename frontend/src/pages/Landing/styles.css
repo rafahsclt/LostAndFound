@@ -1,0 +1,84 @@
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    min-width: 875px;
+}
+
+.lost-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    background: #FDDEDE;
+    min-width: 400px;
+}
+
+.found-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    background: #EBF8FF;
+    min-width: 500px;
+}
+
+.logo {
+    height: 100px;
+    left: 0;
+    right: 0;
+    top: 60px;
+    margin: auto;
+    padding-left: 80px;
+    position: absolute;
+}
+
+.container-title {
+    font-size: 28px;
+    color: #000;
+}
+
+.button {
+    background-color: inherit;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    transition: opacity 0.2s;
+}
+
+.lost-button {
+    border: 2px solid #C53030;
+    color: #C53030; 
+}
+
+.found-button {
+    border: 2px solid #3172B7;
+    color: #3172B7;
+}
+
+.link {
+    text-decoration: none;
+    margin-top: 10px; 
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: opacity 0.2;
+}
+
+.lost-link {
+    color: #C53030;
+}
+
+.found-link {
+    color: #3172B7;
+}
+
+
+.button:hover, .link:hover {
+    opacity: 0.5;
+}
