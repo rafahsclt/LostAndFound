@@ -1,32 +1,38 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa'
 
 import logoImg from '../../assets/logo.png'
 import './styles.css'
 
 const Landing: React.FC = () => {
+    const history = useHistory()
+
     return (
-        <main className="container">
-            <img src={logoImg} className="logo"/>
+        <main id="landing-container">
+            <img src={logoImg} alt="LostAndFound" />
 
             <section className="lost-container">
-                <p className="container-title">Perdeu algo?</p>
-                <button className="lost-button button">Cadastre um objeto perdido</button>
+                <p>Perdeu algo?</p>
+                <button 
+                    className="lost-button"
+                    onClick={() => history.push('new-lost')}
+                >
+                        Cadastre um objeto perdido</button>
                 <Link 
                     to="/"
-                    className="lost-link link"
+                    className="lost-link"
                 >
                     Veja a lista de perdidos
                     <FaArrowRight size={15} style={{ marginLeft: 10 }}/>
                 </Link>
             </section>
             <section className="found-container">
-                <p className="container-title">Encontou algo?</p>
-                <button className="found-button button">Cadastre um objeto encontrado</button>
+                <p>Encontou algo?</p>
+                <button className="found-button">Cadastre um objeto encontrado</button>
                 <Link 
                     to="/"
-                    className="found-link link"
+                    className="found-link"
                 >
                     Veja a lista de encontrados
                     <FaArrowRight size={15} style={{ marginLeft: 10 }}/>

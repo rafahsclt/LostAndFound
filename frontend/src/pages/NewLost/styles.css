@@ -1,11 +1,114 @@
-.container {
-    height: 100%;
+#new-lost-container {
+    height: 1fr;
     width: 100%;
-    display: flex;
-    min-width: 875px;
     background: #FDDEDE;
+    padding: 80px 20px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.content {
-    
+#new-lost-container header img {
+    height: 30px;;
+}
+
+#new-lost-container header {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+
+#new-lost-container header button span {
+    color: #C53030;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#new-lost-container header button {
+    border: 0;
+    background-color: inherit;
+    transition: opacity 0.2s;
+}
+
+#new-lost-container header button:hover {
+    opacity: 0.5;
+}
+
+#new-lost-container form {
+    width: 50%;
+    background: #fff;
+    border: 1px solid #C53030;
+    padding: 30px 50px;
+    border-radius: 8px;
+}
+
+#new-lost-container form .title-box {
+    padding-bottom: 10px;
+    border-bottom: 1px solid grey;
+    margin-bottom: 10px;
+}
+
+#new-lost-container form fieldset {
+    margin-top: 44px;
+    min-inline-size: auto;
+    border: 0;
+}
+
+#new-lost-container form legend {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#new-lost-container form .field {
+    flex: 1;
+  
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+
+#new-lost-container form input {
+    flex: 1;
+    background: #f0f0f5;
+    border-radius: 8px;
+    border: 0;
+    padding: 16px 24px;
+    font-size: 16px;
+    color: #6c6c80;
+}
+
+#new-lost-container form input::placeholder {
+    color: #a0a0b2;
+}
+
+#new-lost-container form label {
+    font-size: 16px;
+    margin-bottom: 8px
+}
+
+#new-lost-container form .field select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    flex: 1;
+    background: #f0f0f5;
+    border-radius: 8px;
+    border: 0;
+    padding: 16px 24px;
+    font-size: 16px;
+    color: #6c6c80;
+}
+
+#page-create-point form .leaflet-container {
+    width: 100%;
+    height: 350px;
+    border-radius: 8px;
+    margin-bottom: 24px;
 }
