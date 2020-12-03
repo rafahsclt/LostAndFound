@@ -1,19 +1,12 @@
-import React, { useState, useCallback, ChangeEvent } from 'react'
+import React, { useState, useCallback, ChangeEvent, useEffect, useMemo } from 'react'
 import { useHistory } from 'react-router-dom'
 import { FaArrowLeft } from 'react-icons/fa'
-import { TileLayer, Marker } from 'react-leaflet'
-import { LeafletMouseEvent } from 'leaflet'
+import { TileLayer, MapContainer } from 'react-leaflet'
 
+import api from '../../services/api'
+import LocationMarker from '../../components/LocationMarker'
 import logoImg from '../../assets/logo.png'
 import './styles.css'
-
-const cat = [
-    { id: 1, name: 'Roupa' },
-    { id: 2, name: 'Aparelho Eletrônico' },
-    { id: 3, name: 'Acessório' },
-    { id: 4, name: 'Documento' },
-    { id: 5, name: 'Outros' }
-]
 
 interface ICategory {
     id: number
@@ -23,24 +16,45 @@ interface ICategory {
 const NewLost: React.FC = () => {
     const history = useHistory()
 
-    const [formData, setFormData] = useState()
-    const [categories, setCategories] = useState<ICategory[]>(cat)
+    const [inputData, setInputData] = useState({
+        name: '',
+        telephone: '',
+        object: '',
+    })
+
+    const [observation, setObservation] = useState<string>('')
+    const [categories, setCategories] = useState<ICategory[]>([])
+    const [selectedCategory, setSelectedCategory] = useState<string>('0')
+
+    const [selectedPosition, setSelectedPosition] = useState<[number, number]>([0, 0])
 
     const handleInputChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
 
+        setInputData({...inputData, [name]: value })
+    }, [])
 
-    },[])
+    const handleSelectChange = useCallback((event: ChangeEvent<HTMLSelectElement>) => {
+        const category = event.target.value
+
+        setSelectedCategory(category)
+    }, [])
+
+    useEffect(() => {
+        api.get('categories').then(response => {
+            setCategories(response.data)
+        })
+    }, [])
 
     return (
         <div id="new-lost-container">
             <header>
-                <img src={logoImg} alt="LostAndFound"/>
+                <img src={logoImg} alt="LostAndFound" />
                 <button
                     className="header-button"
                     onClick={() => history.push('/')}
                 >
-                    <FaArrowLeft size={15} color="#C53030"/>
+                    <FaArrowLeft size={15} color="#C53030" />
                     <span className="header-text">Voltar para Landing</span>
                 </button>
             </header>
@@ -56,7 +70,7 @@ const NewLost: React.FC = () => {
 
                     <div className="field">
                         <label htmlFor="name">Seu nome</label>
-                        <input 
+                        <input
                             type="text"
                             id="name"
                             name="name"
@@ -93,9 +107,10 @@ const NewLost: React.FC = () => {
 
                     <div className="field">
                         <label htmlFor="category">Categoria</label>
-                        <select name="categories" id="categories">
+                        <select name="categories" id="categories" onChange={handleSelectChange}>
+                            <option value='0'></option>
                             {categories.map(category => (
-                                <option 
+                                <option
                                     key={category.id}
                                     value={category.name}
                                 >
@@ -104,16 +119,36 @@ const NewLost: React.FC = () => {
                             ))}
                         </select>
                     </div>
+
+                    <div className="t-field">
+                        <label htmlFor="observations">Observações</label>
+                        <textarea 
+                            name="observations" 
+                            id="observations"
+                            onChange={e => setObservation(e.target.value)}
+                        />
+                    </div>
                 </fieldset>
 
                 <fieldset>
                     <legend>
                         <h2>Onde foi perdido ?</h2>
+                        <span>Selecione o endereço pelo mapa</span>
                     </legend>
                 </fieldset>
 
-
+                <MapContainer center={[-22.9343722, -47.0485725]} zoom={16} >
+                    <TileLayer
+                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <LocationMarker 
+                        popupText="teste"
+                        setSelectedPosition={setSelectedPosition}
+                    />
+                </MapContainer>
             </form>
+
         </div>
     )
 }
