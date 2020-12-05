@@ -1,11 +1,14 @@
-import React, { useState, useCallback, ChangeEvent, useEffect, useMemo } from 'react'
+import React, { useState, useCallback, ChangeEvent, useEffect, FormEvent } from 'react'
 import { useHistory } from 'react-router-dom'
 import { FaArrowLeft } from 'react-icons/fa'
 import { TileLayer, MapContainer } from 'react-leaflet'
 
 import api from '../../services/api'
-import LocationMarker from '../../components/LocationMarker'
 import logoImg from '../../assets/logo.png'
+
+import LocationMarker from '../../components/LocationMarker'
+import Input from '../../components/Input'
+import LostButton from '../../components/LostButton'
 import './styles.css'
 
 interface ICategory {
@@ -31,14 +34,35 @@ const NewLost: React.FC = () => {
     const handleInputChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
 
+        console.log(name, value)
+
         setInputData({...inputData, [name]: value })
-    }, [])
+    }, [inputData, setInputData])
 
     const handleSelectChange = useCallback((event: ChangeEvent<HTMLSelectElement>) => {
         const category = event.target.value
 
         setSelectedCategory(category)
-    }, [])
+    }, [setSelectedCategory])
+
+    const handleSubmit = useCallback((event: FormEvent) => {
+        event.preventDefault()
+
+        const { name, telephone, object } = inputData
+        const [ latitude, longitude ] = selectedPosition
+
+        const data = {
+            name,
+            telephone,
+            object,
+            category_id: selectedCategory,
+            observations: observation,
+            latitude,
+            longitude
+        }
+        
+        console.log(data)
+    }, [inputData, selectedPosition, observation, selectedCategory])
 
     useEffect(() => {
         api.get('categories').then(response => {
@@ -58,7 +82,7 @@ const NewLost: React.FC = () => {
                     <span className="header-text">Voltar para Landing</span>
                 </button>
             </header>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="title-box">
                     <h1>Cadastro de um objeto perdido!</h1>
                 </div>
@@ -68,26 +92,19 @@ const NewLost: React.FC = () => {
                         <h2>Seu dados</h2>
                     </legend>
 
-                    <div className="field">
-                        <label htmlFor="name">Seu nome</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            onChange={handleInputChange}
-                            placeholder="Seu nome"
-                        />
-                    </div>
+                    <Input 
+                        property="name"
+                        title="Nome"
+                        placeholder="Seu nome"
+                        onChange={handleInputChange}
+                    />
 
-                    <div className="field">
-                        <label htmlFor="telephone">Telefone</label>
-                        <input type="text"
-                            id="telephone"
-                            name="telephone"
-                            onChange={handleInputChange}
-                            placeholder="Seu telefone ou celular para contato"
-                        />
-                    </div>
+                    <Input 
+                        property="telephone"
+                        title="Telefone"
+                        placeholder="Seu telefone ou celular para contato"
+                        onChange={handleInputChange}
+                    />
                 </fieldset>
 
                 <fieldset>
@@ -95,15 +112,12 @@ const NewLost: React.FC = () => {
                         <h2>Objeto</h2>
                     </legend>
 
-                    <div className="field">
-                        <label htmlFor="object">O que é?</label>
-                        <input type="text"
-                            id="object"
-                            name="object"
-                            onChange={handleInputChange}
-                            placeholder="O que você perdeu?"
-                        />
-                    </div>
+                    <Input 
+                        property="object"
+                        title="O que é?"
+                        placeholder="O que você perdeu?"
+                        onChange={handleInputChange}
+                    />
 
                     <div className="field">
                         <label htmlFor="category">Categoria</label>
@@ -112,7 +126,7 @@ const NewLost: React.FC = () => {
                             {categories.map(category => (
                                 <option
                                     key={category.id}
-                                    value={category.name}
+                                    value={category.id}
                                 >
                                     {category.name}
                                 </option>
@@ -147,8 +161,11 @@ const NewLost: React.FC = () => {
                         setSelectedPosition={setSelectedPosition}
                     />
                 </MapContainer>
-            </form>
 
+                <LostButton>
+                    Cadastrar objeto perdido
+                </LostButton>
+            </form>
         </div>
     )
 }

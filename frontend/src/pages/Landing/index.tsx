@@ -1,24 +1,24 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa'
 
 import logoImg from '../../assets/logo.png'
+import LostButton from '../../components/LostButton'
+import FoundButton from '../../components/FoundButton'
 import './styles.css'
 
 const Landing: React.FC = () => {
-    const history = useHistory()
-
     return (
         <main id="landing-container">
             <img src={logoImg} alt="LostAndFound" />
 
             <section className="lost-container">
                 <p>Perdeu algo?</p>
-                <button 
-                    className="lost-button"
-                    onClick={() => history.push('new-lost')}
+                <LostButton
+                    route="new-lost"
                 >
-                        Cadastre um objeto perdido</button>
+                    Cadastre um objeto perdido
+                </LostButton>
                 <Link 
                     to="/"
                     className="lost-link"
@@ -29,7 +29,9 @@ const Landing: React.FC = () => {
             </section>
             <section className="found-container">
                 <p>Encontou algo?</p>
-                <button className="found-button">Cadastre um objeto encontrado</button>
+                <FoundButton>
+                    Cadastre um objeto encontrado
+                </FoundButton>
                 <Link 
                     to="/"
                     className="found-link"
