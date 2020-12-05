@@ -7,8 +7,9 @@ function render(image: Image) {
     }
 }
 
-function renderMany(items: Image[]) {
-    return items.map(item => render(item))
+function renderMany(images: Image[]) {
+    return images.map(image => render(image))
 }
+
 
 export default { render, renderMany }

@@ -17,7 +17,7 @@ interface ICategory {
     name: string
 }
 
-const NewLost: React.FC = () => {
+const NewFound: React.FC = () => {
     const history = useHistory()
 
     const [inputData, setInputData] = useState({
@@ -67,7 +67,7 @@ const NewLost: React.FC = () => {
         
         if(selectedFile) data.append('images', selectedFile)
 
-        await api.post('lost', data)
+        await api.post('found', data)
 
         alert('Objeto perdido cadastrado!')
 
@@ -81,20 +81,20 @@ const NewLost: React.FC = () => {
     }, [])
 
     return (
-        <div id="new-lost-container">
+        <div id="new-found-container">
             <header>
                 <img src={logoImg} alt="LostAndFound" />
                 <button
                     className="header-button"
                     onClick={() => history.push('/')}
                 >
-                    <FaArrowLeft size={15} color="#C53030" />
+                    <FaArrowLeft size={15} color="#3172B7" />
                     <span className="header-text">Voltar para Landing</span>
                 </button>
             </header>
             <form onSubmit={handleSubmit}>
                 <div className="title-box">
-                    <h1>Cadastro de um objeto perdido!</h1>
+                    <h1>Cadastro de um objeto encontrado!</h1>
                 </div>
 
                 <Dropzone
@@ -129,7 +129,7 @@ const NewLost: React.FC = () => {
                     <Input
                         property="object"
                         title="O que é?"
-                        placeholder="O que você perdeu?"
+                        placeholder="O que você encontrou?"
                         onChange={handleInputChange}
                     />
 
@@ -160,7 +160,7 @@ const NewLost: React.FC = () => {
 
                 <fieldset>
                     <legend>
-                        <h2>Onde foi perdido ?</h2>
+                        <h2>Onde foi encontrado ?</h2>
                         <span>Selecione o endereço pelo mapa</span>
                     </legend>
                 </fieldset>
@@ -177,13 +177,13 @@ const NewLost: React.FC = () => {
                 </MapContainer>
 
                 <Button
-                    category="lost"
+                    category="found"
                 >
-                    Cadastrar objeto perdido
+                    Cadastrar objeto encontrado
                 </Button>
             </form>
         </div>
     )
 }
 
-export default NewLost
+export default NewFound

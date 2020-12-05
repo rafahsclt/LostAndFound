@@ -32,7 +32,7 @@ export default class Item {
     @Column()
     category_id: number
 
-    @OneToMany(() => Image, image => image.item, {
+    @OneToMany(() => Image, images => images.item, {
         cascade: ['insert', 'update']
     })
     @JoinColumn({ name: 'item_id' })

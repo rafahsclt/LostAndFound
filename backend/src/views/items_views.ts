@@ -11,7 +11,7 @@ function render(item: Item) {
         latitude: item.latitude,
         longitude: item.longitude,
         observations: item.observations,
-        category: categories_views.render(item.category),
+        category: item.category,
         images: images_views.renderMany(item.images)
     }
 }

@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa'
 
 import logoImg from '../../assets/logo.png'
-import LostButton from '../../components/LostButton'
-import FoundButton from '../../components/FoundButton'
+import Button from '../../components/Button'
 import './styles.css'
 
 const Landing: React.FC = () => {
@@ -14,11 +13,12 @@ const Landing: React.FC = () => {
 
             <section className="lost-container">
                 <p>Perdeu algo?</p>
-                <LostButton
+                <Button
                     route="new-lost"
+                    category="lost"
                 >
                     Cadastre um objeto perdido
-                </LostButton>
+                </Button>
                 <Link 
                     to="/"
                     className="lost-link"
@@ -29,9 +29,12 @@ const Landing: React.FC = () => {
             </section>
             <section className="found-container">
                 <p>Encontou algo?</p>
-                <FoundButton>
+                <Button
+                    route="new-found"
+                    category="found"
+                >
                     Cadastre um objeto encontrado
-                </FoundButton>
+                </Button>
                 <Link 
                     to="/"
                     className="found-link"

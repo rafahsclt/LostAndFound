@@ -45,7 +45,7 @@ async function create(request: Request, response: Response) {
         longitude: Yup.number().required(),
         observations: Yup.string().max(300),
         lostOrFound: Yup.string().required(),
-        images: Yup.array(Yup.object().shape({
+        image: Yup.array(Yup.object().shape({
             path: Yup.string().required()
         }))
     })

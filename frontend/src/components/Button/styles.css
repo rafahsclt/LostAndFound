@@ -1,0 +1,33 @@
+.found-button {
+    background-color: inherit;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    transition: opacity 0.2s;
+    border: 0;
+
+    background:#3172B7;
+    color: #fff; 
+}
+
+.found-button:hover {
+    opacity: 0.5;
+}
+
+.lost-button {
+    background-color: inherit;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    transition: opacity 0.2s;
+    border: 0;
+
+    background: #C53030;
+    color: #fff; 
+}
+
+.lost-button:hover {
+    opacity: 0.5;
+}

@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class createItems1606589843241 implements MigrationInterface {
+export class createItems1607191445538 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
@@ -59,7 +59,7 @@ export class createItems1606589843241 implements MigrationInterface {
                     referencedColumnNames: ['id'],
                     onUpdate: 'CASCADE',
                     onDelete: 'CASCADE'
-                }
+                },
             ]
         }))
     }
@@ -67,5 +67,6 @@ export class createItems1606589843241 implements MigrationInterface {
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable('items')
     }
+
 
 }

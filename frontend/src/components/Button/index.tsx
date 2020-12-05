@@ -5,14 +5,15 @@ import './styles.css'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     route?: string
+    category: 'lost' | 'found'
 }
 
-const FoundButton: React.FC<ButtonProps> = ({ route, children, ...rest }) => {
+const Button: React.FC<ButtonProps> = ({ route, category, children, ...rest }) => {
     const history = useHistory()
 
     return (
         <button
-            className="found-button"
+            className={`${category}-button`}
             onClick={() => route && history.push(route)}
             {...rest}
         >
@@ -21,4 +22,4 @@ const FoundButton: React.FC<ButtonProps> = ({ route, children, ...rest }) => {
     )
 }
 
-export default FoundButton
+export default Button

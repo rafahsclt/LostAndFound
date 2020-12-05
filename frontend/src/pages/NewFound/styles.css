@@ -1,0 +1,134 @@
+#new-found-container {
+    height: 1fr;
+    width: 100%;
+    background: #EBF8FF;
+    padding: 80px 20px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#new-found-container header img {
+    height: 30px;;
+}
+
+#new-found-container header {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+
+#new-found-container header button span {
+    color: #3172B7;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#new-found-container header button {
+    border: 0;
+    background-color: inherit;
+    transition: opacity 0.2s;
+}
+
+#new-found-container header button:hover {
+    opacity: 0.5;
+}
+
+#new-found-container form {
+    width: 50%;
+    background: #fff;
+    border: 1px solid #3172B7;
+    padding: 30px 50px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+#new-found-container form .title-box {
+    padding-bottom: 10px;
+    border-bottom: 1px solid grey;
+    margin-bottom: 10px;
+}
+
+#new-found-container form fieldset {
+    margin-top: 44px;
+    min-inline-size: auto;
+    border: 0;
+}
+
+#new-found-container form legend {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#new-found-container form legend span {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c6c80;
+  }
+
+#new-found-container form .field {
+    flex: 1;
+  
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+
+#new-found-container form textarea {
+    flex: 1;
+    background: #f0f0f5;
+    border-radius: 8px;
+    border: 0;
+    padding: 16px 24px;
+    font-size: 16px;
+    color: #6c6c80;
+    height: 500px;
+    resize: none;
+}
+
+#new-found-container form .t-field {
+    flex: 1;
+  
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    height: 180px;
+}
+
+
+#new-found-container form label {
+    font-size: 16px;
+    margin-bottom: 8px
+}
+
+#new-found-container form .field select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    flex: 1;
+    background: #f0f0f5;
+    border-radius: 8px;
+    border: 0;
+    padding: 16px 24px;
+    font-size: 16px;
+    color: #6c6c80;
+}
+
+#new-found-container form .leaflet-container {
+    width: 100%;
+    height: 450px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+#new-found-container form button {
+    align-self: flex-end;
+}

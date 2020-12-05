@@ -10,6 +10,9 @@ export default class Image {
     @Column()
     path: string
 
+    @Column()
+    item_id: string
+
     @ManyToOne(() => Item, item => item.images)
     @JoinColumn({ name: 'item_id' })
     item: Item
