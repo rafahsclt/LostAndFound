@@ -9,35 +9,6 @@
     align-items: center;
 }
 
-#new-lost-container header img {
-    height: 30px;;
-}
-
-#new-lost-container header {
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 60px;
-}
-
-#new-lost-container header button span {
-    color: #C53030;
-    font-size: 18px;
-    font-weight: bold;
-    margin-left: 10px;
-}
-
-#new-lost-container header button {
-    border: 0;
-    background-color: inherit;
-    transition: opacity 0.2s;
-}
-
-#new-lost-container header button:hover {
-    opacity: 0.5;
-}
-
 #new-lost-container form {
     width: 50%;
     background: #fff;

@@ -7,6 +7,7 @@ import api from '../../services/api'
 import logoImg from '../../assets/logo.png'
 
 import LocationMarker from '../../components/LocationMarker'
+import Header from '../../components/Header'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 import Dropzone from '../../components/Dropzone'
@@ -82,16 +83,9 @@ const NewFound: React.FC = () => {
 
     return (
         <div id="new-found-container">
-            <header>
-                <img src={logoImg} alt="LostAndFound" />
-                <button
-                    className="header-button"
-                    onClick={() => history.push('/')}
-                >
-                    <FaArrowLeft size={15} color="#3172B7" />
-                    <span className="header-text">Voltar para Landing</span>
-                </button>
-            </header>
+            <Header 
+                category='found'
+            />
             <form onSubmit={handleSubmit}>
                 <div className="title-box">
                     <h1>Cadastro de um objeto encontrado!</h1>

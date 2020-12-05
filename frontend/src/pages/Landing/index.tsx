@@ -20,7 +20,7 @@ const Landing: React.FC = () => {
                     Cadastre um objeto perdido
                 </Button>
                 <Link 
-                    to="/"
+                    to="/lost-items"
                     className="lost-link"
                 >
                     Veja a lista de perdidos
@@ -36,7 +36,7 @@ const Landing: React.FC = () => {
                     Cadastre um objeto encontrado
                 </Button>
                 <Link 
-                    to="/"
+                    to="/found-items"
                     className="found-link"
                 >
                     Veja a lista de encontrados

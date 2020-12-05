@@ -1,0 +1,37 @@
+#header-container img {
+    height: 30px;;
+}
+
+#header-container {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+
+#header-container button span {
+    color: #3172B7;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#header-container button .found {
+    color: #3172B7;
+}
+
+#header-container button .lost {
+    color: #C53030;
+}
+
+#header-container button {
+    border: 0;
+    background-color: inherit;
+    transition: opacity 0.2s;
+}
+
+#header-container button:hover {
+    opacity: 0.5;
+}
+
