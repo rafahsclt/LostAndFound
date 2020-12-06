@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useMapEvents, Marker, Popup } from 'react-leaflet'
 
 interface ILocationMarker {
-  popupText: string
+  popupText?: string
   setSelectedPosition(array: [number, number]): void
 }
 

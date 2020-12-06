@@ -1,8 +1,8 @@
-#found-list-container {
-    height: 1fr;
+#lost-list-container {
     min-height: 100%;
+    height: 1fr;
     width: 100%;
-    background: #EBF8FF;
+    background: #FDDEDE;
     padding: 80px 20px;
     
     display: flex;
@@ -10,10 +10,10 @@
     align-items: center;
 }
 
-#found-list-container section {
+#lost-list-container section {
     width: 50%;
     background: #fff;
-    border: 1px solid #3172B7;
+    border: 1px solid #C53030;
     padding: 30px 50px;
     border-radius: 8px;
     display: flex;
@@ -21,7 +21,7 @@
     margin-bottom: 50px;
 }
 
-#found-list-container section .title-box {
+#lost-list-container section .title-box {
     padding-bottom: 10px;
     border-bottom: 1px solid grey;
     margin-bottom: 10px;
@@ -29,41 +29,41 @@
     justify-content: space-between;
 }
 
-#found-list-container section .title-box button {
+#lost-list-container section .title-box button {
     border: 0;
     background-color: inherit;
     margin-left: 10px;
 }
 
-#found-list-container section .content-box {
+#lost-list-container section .content-box {
     padding: 10px 0;
     display: flex;
 }
 
-#found-list-container section .content-box aside {
+#lost-list-container section .content-box aside {
     height: 150px;
     width: 150px;
     border: 1px solid grey;
     margin-right: 20px;
 }
 
-#found-list-container section .content-box aside img {
+#lost-list-container section .content-box aside img {
     height: 150px;
     width: 150px;
 }
 
-#found-list-container section .content-box .description-box {
+#lost-list-container section .content-box .description-box {
     display: flex;
     flex-direction: column;
 }
 
-#found-list-container section .content-box .description-box .description {
+#lost-list-container section .content-box .description-box .description {
     display: flex;
     flex-direction: row;
     margin-bottom: 5px;
 }
 
-#found-list-container section .content-box .description-box .description strong {
+#lost-list-container section .content-box .description-box .description strong {
     margin-right: 10px;
 }
 

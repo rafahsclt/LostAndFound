@@ -5,6 +5,7 @@ import Landing from '../pages/Landing'
 import NewFound from "../pages/NewFound"
 import NewLost from '../pages/NewLost'
 import FoundItems from '../pages/FoundItems'
+import LostItems from '../pages/LostItems'
 
 const Routes: React.FC = () => {
     return (
@@ -14,6 +15,7 @@ const Routes: React.FC = () => {
                 <Route path="/new-lost" component={NewLost} />
                 <Route path="/new-found" component={NewFound} />
                 <Route path="/found-items" component={FoundItems} />
+                <Route path="/lost-items" component={LostItems} />
             </Switch>
         </BrowserRouter>
     )

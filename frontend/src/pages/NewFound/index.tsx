@@ -1,10 +1,8 @@
 import React, { useState, useCallback, ChangeEvent, useEffect, FormEvent } from 'react'
 import { useHistory } from 'react-router-dom'
-import { FaArrowLeft } from 'react-icons/fa'
 import { TileLayer, MapContainer } from 'react-leaflet'
 
 import api from '../../services/api'
-import logoImg from '../../assets/logo.png'
 
 import LocationMarker from '../../components/LocationMarker'
 import Header from '../../components/Header'
@@ -73,7 +71,7 @@ const NewFound: React.FC = () => {
         alert('Objeto perdido cadastrado!')
 
         history.push('/')
-    }, [inputData, selectedPosition, observation, selectedCategory])
+    }, [inputData, selectedPosition, observation, selectedCategory, history, selectedFile])
 
     useEffect(() => {
         api.get('categories').then(response => {
@@ -165,7 +163,7 @@ const NewFound: React.FC = () => {
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
                     <LocationMarker
-                        popupText="teste"
+                        popupText="Onde foi encontrado!"
                         setSelectedPosition={setSelectedPosition}
                     />
                 </MapContainer>

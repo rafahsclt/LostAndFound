@@ -29,7 +29,7 @@ interface IItems {
     images: IImages[]
 }
 
-const FoundItems: React.FC = () => {
+const LostItems: React.FC = () => {
     const [showModal, setShowModal] = useState(false)
     const [items, setItems] = useState<IItems[]>()
 
@@ -45,23 +45,21 @@ const FoundItems: React.FC = () => {
     }, [])
 
     useEffect(() => {
-        api.get('found').then(response => {
+        api.get('lost').then(response => {
             setItems(response.data)
         })
     }, [])
 
     return (
-        <div id="found-list-container">
-            <Header category="found" />
+        <div id="lost-list-container">
+            <Header category="lost" />
             <ModalMap
                 isOpen={showModal}
                 onRequestClose={() => setShowModal(false)}
                 latitude={latitude}
                 longitude={longitude}
                 objectName={selectedObject}
-            >
-                
-            </ModalMap>
+            />  
             {!items ?
                 <h1>Nenhum objeto cadastrado!</h1>
                 :
@@ -107,4 +105,4 @@ const FoundItems: React.FC = () => {
     )
 }
 
-export default FoundItems
+export default LostItems
