@@ -11,4 +11,6 @@ foundRouter.get('/', foundController.index)
 
 foundRouter.post('/', upload.array("images"), foundController.create)
 
+foundRouter.delete('/:id', foundController.destroy)
+
 export default foundRouter

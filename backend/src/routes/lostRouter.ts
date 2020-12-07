@@ -11,4 +11,6 @@ lostRouter.get('/', lostController.index)
 
 lostRouter.post('/', upload.array('images'), lostController.create)
 
+lostRouter.delete('/:id', lostController.destroy)
+
 export default lostRouter

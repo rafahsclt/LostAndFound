@@ -62,7 +62,18 @@ async function create(request: Request, response: Response) {
 }
 
 async function index(request: Request, response: Response) {
+    const { category_id } = request.query
+
     const itemRepository = getRepository(Item)
+
+    if(category_id) {
+        const items = await itemRepository.find({
+            where: { lostOrFound: 'found', category_id },
+            relations: ['images', 'category']
+        })
+
+        return response.json(items_views.renderMany(items))
+    }
 
     const items = await itemRepository.find({
         where: { lostOrFound: 'found' },
@@ -72,4 +83,24 @@ async function index(request: Request, response: Response) {
     return response.json(items_views.renderMany(items))
 }
 
-export default { create, index }
+async function destroy(request: Request, response: Response) {
+    try {
+        const itemsRepository = getRepository(Item)
+    
+        const { id } = request.params
+    
+        const user = await itemsRepository.find({
+            where: { id }
+        })
+
+        if(!user) throw new Error('Usuário não encontrado')
+        
+        await itemsRepository.delete(id)
+
+        return response.json(user)
+    } catch(err) {
+        return response.status(400).json({ error: err.msg })
+    }
+}
+
+export default { create, index, destroy }
