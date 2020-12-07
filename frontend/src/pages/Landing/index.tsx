@@ -3,16 +3,19 @@ import { Link } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa'
 
 import logoImg from '../../assets/logo.png'
+import lostImg from '../../assets/lost-item.png'
+import foundImg from '../../assets/found-item.png'
 import Button from '../../components/Button'
 import './styles.css'
 
 const Landing: React.FC = () => {
     return (
         <main id="landing-container">
-            <img src={logoImg} alt="LostAndFound" />
+            <img src={logoImg} alt="LostAndFound" className="logo"/>
 
             <section className="lost-container">
                 <p>Perdeu algo?</p>
+                <img src={lostImg} alt="LostItem"/>
                 <Button
                     route="new-lost"
                     category="lost"
@@ -29,6 +32,7 @@ const Landing: React.FC = () => {
             </section>
             <section className="found-container">
                 <p>Encontou algo?</p>
+                <img src={foundImg} alt="FoundItem"/>
                 <Button
                     route="new-found"
                     category="found"

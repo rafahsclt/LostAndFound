@@ -1,41 +1,17 @@
 #new-found-container {
     height: 1fr;
     width: 100%;
-    background: #EBF8FF;
     padding: 80px 20px;
     
     display: flex;
     flex-direction: column;
     align-items: center;
-}
 
-#new-found-container header img {
-    height: 30px;;
-}
-
-#new-found-container header {
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 60px;
-}
-
-#new-found-container header button span {
-    color: #3172B7;
-    font-size: 18px;
-    font-weight: bold;
-    margin-left: 10px;
-}
-
-#new-found-container header button {
-    border: 0;
-    background-color: inherit;
-    transition: opacity 0.2s;
-}
-
-#new-found-container header button:hover {
-    opacity: 0.5;
+    background-color: #EBF8FF;
+    background-image: url('../../assets/found-item.png');
+    background-position: -20% 0;
+    background-size: 1000px;
+    background-repeat: no-repeat;
 }
 
 #new-found-container form {

@@ -25,7 +25,7 @@
     min-width: 500px;
 }
 
-#landing-container img {
+#landing-container .logo {
     height: 100px;
     left: 0;
     right: 0;
@@ -36,7 +36,7 @@
 }
 
 #landing-container section p {
-    font-size: 28px;
+    font-size: 32px;
     color: #000;
 }
 
@@ -62,4 +62,8 @@
 
 #landing-container section link:hover {
     opacity: 0.5;
+}
+
+#landing-container section img {
+    height: 400px;
 }
