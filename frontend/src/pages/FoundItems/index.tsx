@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, ChangeEvent } from 'react'
 import { FiTrash, FiMap } from 'react-icons/fi'
 
 import api from '../../services/api'
@@ -32,6 +32,8 @@ interface IItems {
 const FoundItems: React.FC = () => {
     const [showModal, setShowModal] = useState(false)
     const [items, setItems] = useState<IItems[]>()
+    const [categories, setCategories] = useState<ICategory[]>([])
+    const [selectedCategory, setSelectedCategory] = useState(0)
 
     const [latitude, setLatitude] = useState(0)
     const [longitude, setLongitude] = useState(0)
@@ -44,11 +46,39 @@ const FoundItems: React.FC = () => {
         setShowModal(true)
     }, [])
 
+    const handleSelectChange = useCallback((event: ChangeEvent<HTMLSelectElement>) => {
+        const category = event.target.value
+
+        setSelectedCategory(Number(category))
+    }, [setSelectedCategory])
+
+    const handleRemoveItem = useCallback(async (id: number) => {
+        await api.delete(`found/${id}`)
+
+        const filteredItems = items?.filter(item => item.id !== id)
+        setItems(filteredItems)
+    }, [items])
+
     useEffect(() => {
+        api.get('categories').then(response => {
+            setCategories(response.data)
+        })
         api.get('found').then(response => {
             setItems(response.data)
         })
     }, [])
+
+    useEffect(() => {
+        if (selectedCategory !== 0) {
+            api.get(`found?category_id=${selectedCategory}`).then(response => {
+                setItems(response.data)
+            })
+        } else {
+            api.get('found').then(response => {
+                setItems(response.data)
+            })
+        }
+    }, [selectedCategory])
 
     return (
         <div id="found-list-container">
@@ -59,9 +89,24 @@ const FoundItems: React.FC = () => {
                 latitude={latitude}
                 longitude={longitude}
                 objectName={selectedObject}
+                ariaHideApp={false}
             >
-                
+
             </ModalMap>
+            <div className="field">
+                <label htmlFor="category">Filtrar por Categoria</label>
+                <select name="categories" id="categories" onChange={handleSelectChange}>
+                    <option value='0'>Sem filtro</option>
+                    {categories.map(category => (
+                        <option
+                            key={category.id}
+                            value={category.id}
+                        >
+                            {category.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
             {!items ?
                 <h1>Nenhum objeto cadastrado!</h1>
                 :
@@ -73,7 +118,7 @@ const FoundItems: React.FC = () => {
                                 <button onClick={() => openModal(item.latitude, item.longitude, item.object)}>
                                     <FiMap color="#3172B7" size={20} />
                                 </button>
-                                <button>
+                                <button onClick={() => handleRemoveItem(item.id)}>
                                     <FiTrash color="#3172B7" size={20} />
                                 </button>
                             </div>
@@ -84,19 +129,19 @@ const FoundItems: React.FC = () => {
                             </aside>
                             <div className="description-box">
                                 <div className="description">
-                                    <strong>Nome : </strong>
+                                    <strong>Nome: </strong>
                                     <p>{item.name}</p>
                                 </div>
                                 <div className="description">
-                                    <strong>Telefone : </strong>
+                                    <strong>Telefone: </strong>
                                     <p>{item.telephone}</p>
                                 </div>
                                 <div className="description">
-                                    <strong>Categoria : </strong>
+                                    <strong>Categoria: </strong>
                                     <p>{item.category.name}</p>
                                 </div>
                                 <div className="description">
-                                    <strong>Observação : </strong>
+                                    <strong>Observação: </strong>
                                     <p>{item.observations}</p>
                                 </div>
                             </div>

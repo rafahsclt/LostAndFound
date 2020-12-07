@@ -67,3 +67,24 @@
     margin-right: 10px;
 }
 
+#lost-list-container .field select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    flex: 1;
+    background: #f0f0f5;
+    border-radius: 8px;
+    border: 1px solid #C53030;
+    padding: 16px 24px;
+    font-size: 16px;
+    color: #6c6c80;
+    margin-left: 10px;
+}
+
+#lost-list-container .field label {
+    font-size: 20px;
+}
+
+#lost-list-container .field {
+    margin-bottom: 40px;
+}

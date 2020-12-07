@@ -35,8 +35,6 @@ const NewFound: React.FC = () => {
     const handleInputChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
 
-        console.log(name, value)
-
         setInputData({ ...inputData, [name]: value })
     }, [inputData, setInputData])
 
